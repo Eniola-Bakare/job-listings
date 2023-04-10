@@ -20,7 +20,8 @@
 
 body{
   width: 100%;
-  
+  max-width: 1440px;
+  margin: 0 auto;
   background-color: var(--Light-Grayish-Cyan-Background);
   display: flex;
   flex-direction: column;
@@ -87,7 +88,7 @@ body{
   justify-content: center;
   align-items: center;
   width: 31.6px;
-  height: 31.6px;
+  height: 27.6px;
   cursor: pointer;
 }
 .close-btn:hover{
