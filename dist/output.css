@@ -1,0 +1,71 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --Desaturated-Dark-Cyan: hsl(180, 29%, 50%);
+  --Light-Grayish-Cyan-Background: hsl(180, 52%, 96%);
+  --Light-Grayish-Cyan-Filter-Tablets: hsl(180, 31%, 95%);
+  --Dark-Grayish-Cyan: hsl(180, 8%, 52%);
+  --Very-Dark-Grayish-cyan: hsl(180, 14%, 20%);
+}
+
+body{
+  width: 100%;
+  background-color: var(--Light-Grayish-Cyan-Background);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.img-header{
+  width: 100%;
+  background-color: var(--Desaturated-Dark-Cyan);
+  margin-bottom: 60px;
+}
+
+.img-header img{
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.job-list-wrapper{
+  width: 70%;
+  margin: 0 auto;
+}
+
+.each-job-item{
+  /* width: 70%; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.company-roles{
+  display: flex;
+  gap: 20px;
+}
+
+.company-roles img{
+  height: 50%;
+}
+
+.roles-div{
+  display: flex;
+  flex-direction: column;
+}
+
+.skills-div{
+  display: flex;
+}
+
+.hidden{
+  visibility: hidden;
+  display: none;
+}
