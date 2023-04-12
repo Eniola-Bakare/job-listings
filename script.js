@@ -106,7 +106,7 @@ const updateUi = function(dataItem){
                 <div class="time-location"><ul class="contract"><li>${eachJob.postedAt}</li><li>${eachJob.contract}</li><li>${eachJob.location}</li> </ul></div>
              </div>
           </div>
-      
+          <div class="divider"></div>
           <div class="skills-div">
             <p class="role">${eachJob.role}</p>
             <p class="level">${eachJob.level}</p> 

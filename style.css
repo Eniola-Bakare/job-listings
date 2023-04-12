@@ -114,12 +114,11 @@ body{
   display: flex;
   padding: 15px 30px;
   align-items: center;
+  border-radius: 6px;
   justify-content: space-between;
   border-left: 3px solid var(--Desaturated-Dark-Cyan);
   background-color: var(--Light-Grayish-Cyan-Filter-Tablets);
   box-shadow: -1px 1px 16px 04px rgba(91,164,164,.3);
-  /* box-shadow: -3px 1px 19px 5px rgba(91,164,164,.3); */
-  /* box-shadow: 7px 10px 19px -7px rgba(91,164,164,1); */
 }
 .company-roles{
   display: flex;
@@ -162,6 +161,10 @@ body{
   display: flex;
   gap: 10px;
 }
+.divider{
+  display: none;
+  visibility: hidden;
+}
 .position{
   font-weight: 700;
   margin-bottom: 9px;
@@ -180,6 +183,7 @@ body{
 }
 ul.contract{
   display: flex;
+  align-items: center;
   gap: 40px;
 }
 ul.contract :first-child{
@@ -190,6 +194,7 @@ ul.contract :first-child{
   justify-content: flex-end;
   gap: 4px;
   flex-wrap: wrap;
+  width: 40%;
 }
 .skills-div p{
   color: var(--Desaturated-Dark-Cyan);
@@ -210,4 +215,100 @@ ul.contract :first-child{
 #text{
   visibility: hidden;
   display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+  body{
+    /* background-color: blue; */
+  }
+  ul.contract{
+    gap: 15px;
+  }
+}
+
+@media only screen and (max-width: 832px){
+  .skills-div{
+    width: 50%;
+  }
+  .position{
+    font-size: 16px !important;
+  }
+  .skills-div p,
+  .contract li{
+    font-size: 13px !important;
+  }
+}
+
+
+@media only screen and (max-width: 768px){
+  .position{
+    font-size: 19px !important;
+  }
+  .skills-div{
+    padding-top: 10px;
+    width: 80%;
+    justify-content: flex-start;
+  }
+  .skills-div p,
+  .contract li{
+    font-size: 15px !important;
+  }
+  .skills-div p{
+    margin-left: 0px;
+    margin-right: 10px;
+  }
+  .roles-div{
+    display: block;
+
+  }
+  .divider{
+    display: flex;
+    visibility: visible;
+    width: 100%;
+    border: .1px solid var(--Dark-Grayish-Cyan);
+    margin-bottom: 10px;
+  }
+  .each-job-item{
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 50px;
+  }
+  .comp-name{
+    padding-top: 8px;
+  }
+  .company-roles{
+    position: relative;
+    margin: 20px 0;
+  }
+  .company-roles img{
+    position: absolute;
+    width: 60px;
+    top: -90%;
+  }
+}
+
+@media only screen and (max-width: 480px){
+  .skills-div p,
+  .contract li{
+    font-size: 13px !important;
+  }
+  .skills-div{
+    width: 100%;
+  }
+
+  .search-bar .search-name{
+    font-size: 13px !important;
+  }
+  .search-bar{
+    height: 45px;
+    padding: 0px 20px;
+    top: 55%;
+  }
+  .each-job-item{
+    margin-bottom: 50px;
+    padding: 15px 20px;
+  }
+  .job-list-wrapper{
+    margin-top: 40px;
+  }
 }
