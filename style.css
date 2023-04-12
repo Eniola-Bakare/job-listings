@@ -56,7 +56,7 @@ body{
   justify-content: space-between;
   align-items: center;
 }
-.search-bar .role{
+.search-bar .search-name{
   color: var(--Desaturated-Dark-Cyan);
   padding: 7px 7px;
   background-color: hsla(180, 29%, 88%, .7);
@@ -206,7 +206,8 @@ ul.contract :first-child{
   background-color: var(--Desaturated-Dark-Cyan);
   color: #fff;
 }
-.hidden{
+.hidden,
+#text{
   visibility: hidden;
   display: none;
 }
