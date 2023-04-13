@@ -30,12 +30,11 @@ const filterFunc = function(nodeItem, type){
           </div>
       `)
     }
+    
     // console.log(nodeItem?.textContent, 'nodeItemTextCOntent')
     // console.log(eachRole.parentElement.parentElement, 'node parent item')
     // console.log(eachRole, 'node item')
-    
     // add it to the search bar --- step 1
-
     // for close button n the search elements in the search bar
     let closeBtnNode = [...document.querySelectorAll('.close-btn')]
     closeBtnNode.forEach((eachBtn) => {
@@ -104,8 +103,8 @@ const filterFunc = function(nodeItem, type){
           //  console.log(presentSelectedItems)
           //  console.log(includes)
           //  console.log( includes)
-      // console.log(presentSelectedItems, 'length')
-        // return presentSelectedItems
+          //  console.log(presentSelectedItems, 'length')
+          //  return presentSelectedItems
       } 
       else if(typeCheck){
           const eachArr = eachRequiredJob[type].filter( eachItem => {
@@ -120,16 +119,16 @@ const filterFunc = function(nodeItem, type){
         return eachRole === filterText
         // console.log('Not an array')
       }
-      console.log(presentSelectedItems)
+      // console.log(presentSelectedItems)
       // console.log(typeof eachRequiredJob[type] === 'object')
       // //
       // console.log(eachRole)
       // return eachRole === filterText
     })
-
-
+    
     // console.log(filteredArr)
     // console.log(filteredArr)
+
     jobListWrapper.innerHTML =''
     return updateUi ([...filteredArr])
       

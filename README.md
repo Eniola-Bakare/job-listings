@@ -28,8 +28,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/Eniola-Bakare/job-listings)
-- Live Site URL: [Add live site URL here](https://eniola-bakare.github.io/job-listings/)
+- Solution URL: (https://github.com/Eniola-Bakare/job-listings)
+- Live Site URL: (https://eniola-bakare.github.io/job-listings/)
 
 ## My process
 This project was the challenge I needed after further learnings on array methods, especially data transformational methods.
