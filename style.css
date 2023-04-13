@@ -224,9 +224,6 @@ ul.contract :first-child{
 }
 
 @media only screen and (max-width: 1024px) {
-  body{
-    /* background-color: blue; */
-  }
   ul.contract{
     gap: 15px;
   }
