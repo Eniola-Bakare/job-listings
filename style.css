@@ -20,7 +20,7 @@
 
 body{
   width: 100%;
-  max-width: 1440px;
+  max-width: 100%;
   margin: 0 auto;
   background-color: var(--Light-Grayish-Cyan-Background);
   display: flex;
@@ -109,17 +109,23 @@ body{
   margin: 0 auto;
 }
 .each-job-item{
-  /* width: 70%; */
   margin-bottom: 15px;
   display: flex;
   padding: 15px 30px;
   align-items: center;
   border-radius: 6px;
   justify-content: space-between;
-  border-left: 3px solid var(--Desaturated-Dark-Cyan);
+  transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275);
   background-color: var(--Light-Grayish-Cyan-Filter-Tablets);
   box-shadow: -1px 1px 16px 04px rgba(91,164,164,.3);
 }
+
+.each-job-item:hover,
+.active{
+  transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-left: 3px solid var(--Desaturated-Dark-Cyan);
+}
+
 .company-roles{
   display: flex;
   align-items: center;
@@ -203,7 +209,7 @@ ul.contract :first-child{
   background-color: hsla(180, 29%, 88%, .7);
   border-radius: 5px;
   letter-spacing: .5px;
-  transition: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275);
   font-weight: 600;
 }
 .skills-div p:hover{

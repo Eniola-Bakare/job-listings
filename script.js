@@ -1,9 +1,6 @@
 // 'use strict'
 import data from './data.json' assert { type: 'json'}
 
-
-// const role = document.querySelectorAll('.role')
-const languages = document.querySelectorAll('.languages')
 const searchbar = document.querySelector('.search-bar')
 const searchElWrapper = document.querySelector('.search-els-wrapper')
 const clearBtn = document.querySelector('.clear-btn')
@@ -45,11 +42,19 @@ const filterFunc = function(nodeItem, type){
       
       eachBtn.addEventListener('click', function(){
         eachBtn.parentElement.remove()
+        // catching the selected items array changes
+        console.log(selectedRoles.length)
+        let poppedEl = eachBtn.previousElementSibling.textContent
+        selectedRoles = selectedRoles.filter(each => each !== poppedEl)
+        console.log(selectedRoles.length)
+
+        console.log(selectedRoles, 'remaining selcted roles')
           if (!document.querySelector('.search-el')) {
             searchbar.classList.add('hidden')
             selectedRoles = []
             return updateUi(data)
           }
+
       })
     // console.log(closeBtnNode.length, 'length node<')
     // console.log(closeBtnNode.length, 'length after cls btn btn')
@@ -65,6 +70,7 @@ const filterFunc = function(nodeItem, type){
     const filterText = document.querySelector('.search-name').textContent.toLowerCase();
     console.log(filterText, 'filter search text')
     console.log(selectedRoles, 'selected search text')
+
     filteredArr = data.filter(eachRequiredJob => {
 
       const typeCheck = Array.isArray(eachRequiredJob[type])
@@ -170,6 +176,7 @@ const updateUi = function(dataItem){
   document.querySelectorAll('.role').forEach((eachRole, _, parent) => filterFunc(eachRole, 'role'))
   document.querySelectorAll('.languages').forEach(eachlang => filterFunc(eachlang, 'languages'))
   document.querySelectorAll('.level').forEach(eachPosition => filterFunc(eachPosition, 'level')) 
+  document.querySelectorAll('.tools').forEach(eachTool => filterFunc(eachTool, 'tools')) 
   
 }
 updateUi([...data])
