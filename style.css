@@ -285,6 +285,9 @@ ul.contract :first-child{
     width: 60px;
     top: -90%;
   }
+  .job-list-wrapper{
+    margin-top: 40px;
+  }
 }
 
 @media only screen and (max-width: 480px){
@@ -308,7 +311,5 @@ ul.contract :first-child{
     margin-bottom: 50px;
     padding: 15px 20px;
   }
-  .job-list-wrapper{
-    margin-top: 40px;
-  }
+ 
 }
