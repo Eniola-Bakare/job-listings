@@ -51,12 +51,12 @@ I enjoyed the thrill and relief of every line of code that worked.
 - Large screen-first workflow
 - Structured with HTML 5, 
 - Styled with CSS custom properties
-- Implemented function with vanilla Javascript
+- Implemented functions with vanilla Javascript
 - Adjusted functions and style to reflect desired outcome
 
 ### Continued development
 
-I want topick more projects so I can learn through practice of all I have learnt and I'm learning teoretically
+I want to pick more projects so I can learn through practice of all I have learnt and I'm learning teoretically
 
 ## Author
 
