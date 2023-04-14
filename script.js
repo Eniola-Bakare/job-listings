@@ -10,15 +10,48 @@ let filteredArr = []
 let selectedRoles = []
 let typeArr = []
 
+// sub filter func
+const filterArrFunc = function(){
+  return filteredArr = data.filter(eachRequiredJob => {    
+    const eachDataValueArr =[]
+
+    if (selectedRoles.length >= 1) {
+
+      for (const [key, value] of Object.entries(eachRequiredJob)) {
+        if (Array.isArray(value)) {
+          value.map(eachI => eachDataValueArr.push(eachI.toLowerCase()))
+        }else  if (typeof value === 'string'){
+          eachDataValueArr.push(value.toLowerCase())            
+        }
+      }
+
+      // console.log(eachRequiredJob.company, 'company name')
+      // console.log(eachDataValueArr, 'company name')
+      // console.log(eachDataValueArr)
+
+      let checking = selectedRoles.every(eachSelection => {
+        return eachDataValueArr.includes(eachSelection.toLowerCase())
+         })
+         if (checking) {
+          console.log(eachRequiredJob)
+          return eachRequiredJob
+         }
+        //  console.log(checking)
+        //  console.log(presentSelectedItems)
+        //  console.log(includes)
+        //  console.log( includes)
+        //  console.log(presentSelectedItems, 'length')
+        //  return presentSelectedItems
+    } 
+  })
+}
 // filter func
 const filterFunc = function(nodeItem, type){
   nodeItem.addEventListener('click', function(){
     // console.log(type, 'parentEl')
-    searchbar.classList.remove('hidden');
-    
-    console.log(selectedRoles.includes(nodeItem.textContent), 'checking include first')
-    
-    // the !selectedRoles.includes... checks that the item is not present, while the type checks to see that the type was not selected too
+    searchbar.classList.remove('hidden');   
+    console.log(selectedRoles.includes(nodeItem.textContent), 'checking include first') 
+    // the !selectedRoles.includes... checks that the item is not present
     if(!selectedRoles.includes(nodeItem.textContent)){
       selectedRoles.push(nodeItem?.textContent)
       typeArr.push(type) //lang/role etc i should remove this sha
@@ -30,111 +63,170 @@ const filterFunc = function(nodeItem, type){
           </div>
       `)
     }
-    
     // console.log(nodeItem?.textContent, 'nodeItemTextCOntent')
     // console.log(eachRole.parentElement.parentElement, 'node parent item')
     // console.log(eachRole, 'node item')
     // add it to the search bar --- step 1
     // for close button n the search elements in the search bar
-    let closeBtnNode = [...document.querySelectorAll('.close-btn')]
-    closeBtnNode.forEach((eachBtn) => {
-      
-      eachBtn.addEventListener('click', function(){
-        eachBtn.parentElement.remove()
-        // catching the selected items array changes
-        console.log(selectedRoles.length)
-        let poppedEl = eachBtn.previousElementSibling.textContent
-        selectedRoles = selectedRoles.filter(each => each !== poppedEl)
-        console.log(selectedRoles.length)
 
-        console.log(selectedRoles, 'remaining selcted roles')
+    // const filterText = document.querySelector('.search-name').textContent.toLowerCase(); //i didn't get to use this again as I refactored my code
+      let closeBtnNode = [...document.querySelectorAll('.close-btn')]
+      closeBtnNode.forEach((eachBtn) => {
+        eachBtn.addEventListener('click', function(){
+          eachBtn.parentElement.remove()
+          // catching the selected items array changes
+          console.log(selectedRoles.length)
+          let poppedEl = eachBtn.previousElementSibling.textContent
+          selectedRoles = selectedRoles.filter(each => each !== poppedEl)
+          console.log(selectedRoles.length)
+
+          // trying the filter func here. I just had to refactor into a function seeing that it works in both places
+          // filteredArr = data.filter(eachRequiredJob => {
+
+          //     const typeCheck = Array.isArray(eachRequiredJob[type])
+          //     // console.log(typeCheck, 'typecheck')
+              
+          //     const eachDataValueArr =[]
+        
+          //     if (selectedRoles.length >= 1) {
+        
+          //       for (const [key, value] of Object.entries(eachRequiredJob)) {
+          //         if (Array.isArray(value)) {
+          //           value.map(eachI => eachDataValueArr.push(eachI.toLowerCase()))
+          //         }else  if (typeof value === 'string'){
+          //           eachDataValueArr.push(value.toLowerCase())            
+          //         }
+          //       }
+        
+          //       console.log(eachRequiredJob.company, 'company name')
+          //       // console.log(eachDataValueArr, 'company name')
+          //       // console.log(eachDataValueArr)
+        
+          //       let checking = selectedRoles.every(eachSelection => {
+          //         return eachDataValueArr.includes(eachSelection.toLowerCase())
+          //          })
+          //          if (checking) {
+          //           console.log(eachRequiredJob)
+          //           presentSelectedItems.push(eachRequiredJob)
+          //           return eachRequiredJob
+          //          }
+          //         //  console.log(checking)
+          //         //  console.log(presentSelectedItems)
+          //         //  console.log(includes)
+          //         //  console.log( includes)
+          //         //  console.log(presentSelectedItems, 'length')
+          //         //  return presentSelectedItems
+          //     } 
+          //   })
+            filterArrFunc()
+
+          // working with the above
+          
+          // here, if the search bar is empty, return the entire data- job listings
           if (!document.querySelector('.search-el')) {
             searchbar.classList.add('hidden')
             selectedRoles = []
             return updateUi(data)
           }
+          console.log(selectedRoles, 'remaining selcted roles')
+          // console.log(filteredArr)
+          // filteredArr = data.filter(eachJobListing => console.log(eachJobListing[nodeItem]))
+          // console.log(filteredArr)
+          return updateUi ([...filteredArr])
 
+        })
+      // console.log(closeBtnNode.length, 'length node<')
+      // console.log(closeBtnNode.length, 'length after cls btn btn')
+      console.log(selectedRoles, 'selectedRoles', selectedRoles.length)
+      console.log(selectedRoles.includes(nodeItem.textContent), 'checking include after')
       })
-    // console.log(closeBtnNode.length, 'length node<')
-    // console.log(closeBtnNode.length, 'length after cls btn btn')
-    console.log(selectedRoles, 'selectedRoles', selectedRoles.length)
-    console.log(selectedRoles.includes(nodeItem.textContent), 'checking include after')
-    })
 
 
     // console.log( 'node item class list' , nodeItem.classList, type)
     // console.log(selectedRoles, 'selected roles')
     
-    const presentSelectedItems = []
-    const filterText = document.querySelector('.search-name').textContent.toLowerCase();
-    console.log(filterText, 'filter search text')
-    console.log(selectedRoles, 'selected search text')
+    // const presentSelectedItems = []
+    // const filterText = document.querySelector('.search-name').textContent.toLowerCase();
+    // console.log(filterText, 'filter search text')
+    // console.log(selectedRoles, 'selected search text')
 
-    filteredArr = data.filter(eachRequiredJob => {
+    // filteredArr = data.filter(eachRequiredJob => {
 
-      const typeCheck = Array.isArray(eachRequiredJob[type])
-      // console.log(typeCheck, 'typecheck')
+    //   const typeCheck = Array.isArray(eachRequiredJob[type])
+    //   // console.log(typeCheck, 'typecheck')
       
-      const eachDataValueArr =[]
+    //   const eachDataValueArr =[]
 
-      if (selectedRoles.length > 1) {
+    //   if (selectedRoles.length >= 1) {
 
-        for (const [key, value] of Object.entries(eachRequiredJob)) {
-          if (Array.isArray(value)) {
-            value.map(eachI => eachDataValueArr.push(eachI.toLowerCase()))
-          }else  if (typeof value === 'string'){
-            eachDataValueArr.push(value.toLowerCase())            
-          }
-        }
+    //     for (const [key, value] of Object.entries(eachRequiredJob)) {
+    //       if (Array.isArray(value)) {
+    //         value.map(eachI => eachDataValueArr.push(eachI.toLowerCase()))
+    //       }else  if (typeof value === 'string'){
+    //         eachDataValueArr.push(value.toLowerCase())            
+    //       }
+    //     }
 
-        console.log(eachRequiredJob.company, 'company name')
-        // console.log(eachDataValueArr, 'company name')
-        // console.log(eachDataValueArr)
+    //     console.log(eachRequiredJob.company, 'company name')
+    //     // console.log(eachDataValueArr, 'company name')
+    //     // console.log(eachDataValueArr)
 
-        let checking = selectedRoles.every(eachSelection => {
-          return eachDataValueArr.includes(eachSelection.toLowerCase())
-           })
-           if (checking) {
-            console.log(eachRequiredJob)
-            presentSelectedItems.push(eachRequiredJob)
-            return eachRequiredJob
-           }
-          //  console.log(checking)
-          //  console.log(presentSelectedItems)
-          //  console.log(includes)
-          //  console.log( includes)
-          //  console.log(presentSelectedItems, 'length')
-          //  return presentSelectedItems
-      } 
-      else if(typeCheck){
-          const eachArr = eachRequiredJob[type].filter( eachItem => {
-            return filterText === eachItem.toLowerCase()
-          })
-          // if(eachArr.){ console.log(eachRequiredJob)}
-          if (eachArr.length >= 1) return eachRequiredJob
+    //     let checking = selectedRoles.every(eachSelection => {
+    //       return eachDataValueArr.includes(eachSelection.toLowerCase())
+    //        })
+    //        if (checking) {
+    //         console.log(eachRequiredJob)
+    //         presentSelectedItems.push(eachRequiredJob)
+    //         return eachRequiredJob
+    //        }
+    //       //  console.log(checking)
+    //       //  console.log(presentSelectedItems)
+    //       //  console.log(includes)
+    //       //  console.log( includes)
+    //       //  console.log(presentSelectedItems, 'length')
+    //       //  return presentSelectedItems
+    //   } 
 
-        } else if(!typeCheck) {
-        const eachRole = eachRequiredJob[type].toLowerCase()
-        console.log(eachRole === filterText)
-        return eachRole === filterText
-        // console.log('Not an array')
-      }
-      // console.log(presentSelectedItems)
-      // console.log(typeof eachRequiredJob[type] === 'object')
-      // //
-      // console.log(eachRole)
-      // return eachRole === filterText
-    })
-    
+    //   // In trying to understand the code, and implement a final func, Irealised if else if blocks below untterly unneccessary. Ah! But I enjoyed the process of thinking through and finding the solution sha.
+      
+    //   // else if(typeCheck){
+    //   //     const eachArr = eachRequiredJob[type].filter( eachItem => {
+    //   //       return filterText === eachItem.toLowerCase()
+    //   //     })
+    //   //     if (eachArr.length >= 1) return eachRequiredJob
+
+    //   //   } else if(!typeCheck) {
+    //   //   const eachRole = eachRequiredJob[type].toLowerCase()
+    //   //   console.log(eachRole === filterText)
+    //   //   return eachRole === filterText
+    //   //   // console.log('Not an array')
+    //   // }
+    //   // console.log(presentSelectedItems)
+    //   // console.log(typeof eachRequiredJob[type] === 'object')
+    //   // //
+    //   // console.log(eachRole)
+    //   // return eachRole === filterText
+    // })
+      filterArrFunc()
     // console.log(filteredArr)
     // console.log(filteredArr)
 
     jobListWrapper.innerHTML =''
     return updateUi ([...filteredArr])
-      
   })
 }
-
+// search bar clear func
+clearBtn.addEventListener('click', function(){
+  searchbar.classList.add('hidden')
+  selectedRoles = []
+  filteredArr = []
+  jobListWrapper.innerHTML = searchElWrapper.innerHTML = ''
+  // console.log(filteredArr)
+  // console.log(searchbar.classList)
+  // console.log(selectedRoles, 'selected roles')
+  // console.log(document.querySelectorAll('.role') )
+  updateUi([...data])
+})
 // trying to refactor update ui func
 const updateUi = function(dataItem){
   jobListWrapper.innerHTML =''
@@ -179,18 +271,5 @@ const updateUi = function(dataItem){
   
 }
 updateUi([...data])
-
-// search bar clear func
-clearBtn.addEventListener('click', function(){
-  searchbar.classList.add('hidden')
-  selectedRoles = []
-  filteredArr = []
-  jobListWrapper.innerHTML = searchElWrapper.innerHTML = ''
-  // console.log(filteredArr)
-  // console.log(searchbar.classList)
-  // console.log(selectedRoles, 'selected roles')
-  // console.log(document.querySelectorAll('.role') )
-  updateUi([...data])
-})
 
        
