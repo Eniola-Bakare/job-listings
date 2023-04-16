@@ -69,6 +69,7 @@ body{
 }
 .search-els-wrapper{
   display: flex;
+  overflow: scroll;
 }
 .search-el{
   margin-right: 10px;
@@ -88,7 +89,7 @@ body{
   justify-content: center;
   align-items: center;
   width: 31.6px;
-  height: 27.6px;
+  height: 31.6px;
   cursor: pointer;
 }
 .close-btn:hover{
@@ -229,6 +230,19 @@ ul.contract :first-child{
   }
 }
 
+@media only screen and (max-width: 992px){
+  .search-bar{
+    height: auto;
+    padding: 20px 20px;
+    top: 70%;
+  }
+}
+@media only screen and (max-width: 894px){
+  .search-bar{
+    top: 50%;
+  }
+}
+
 @media only screen and (max-width: 832px){
   .skills-div{
     width: 50%;
@@ -274,7 +288,7 @@ ul.contract :first-child{
   .each-job-item{
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 50px;
+    margin-top: 60px;
   }
   .comp-name{
     padding-top: 8px;
@@ -286,11 +300,16 @@ ul.contract :first-child{
   .company-roles img{
     position: absolute;
     width: 60px;
-    top: -90%;
+    top: -70%;
   }
   .job-list-wrapper{
     margin-top: 40px;
   }
+
+  .clear-btn{
+    padding-left: 20px;
+  }
+
 }
 
 @media only screen and (max-width: 480px){
@@ -301,18 +320,25 @@ ul.contract :first-child{
   .skills-div{
     width: 100%;
   }
-
+  .close-btn{
+    height: 25.2px;
+  }
   .search-bar .search-name{
-    font-size: 13px !important;
+    font-size: 10px !important;
+  }
+  .search-els-wrapper{
+    top: -50%;
+    flex-wrap: nowrap;
+    overflow: scroll;
   }
   .search-bar{
-    height: 45px;
-    padding: 0px 20px;
-    top: 55%;
+    padding: 12px 18px;
   }
   .each-job-item{
-    margin-bottom: 50px;
     padding: 15px 20px;
+  }
+  body{
+    min-width: 375px;
   }
  
 }
