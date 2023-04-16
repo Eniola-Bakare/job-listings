@@ -28,7 +28,6 @@
           return eachDataValueArr.includes(eachSelection.toLowerCase())
           })
           if (checking) {
-            console.log(eachRequiredJob)
             return eachRequiredJob
           }
       } 
@@ -38,7 +37,6 @@
   const filterFunc = function(nodeItem, type){
     nodeItem.addEventListener('click', function(){
       searchbar.classList.remove('hidden');   
-      console.log(selectedRoles.includes(nodeItem.textContent), 'checking include first') 
       if(!selectedRoles.includes(nodeItem.textContent)){
         selectedRoles.push(nodeItem?.textContent)
         
@@ -56,7 +54,6 @@
             eachBtn.parentElement.remove()
 
             // catching the selected items array changes
-            console.log(selectedRoles.length)
             let poppedEl = eachBtn.previousElementSibling.textContent
             selectedRoles = selectedRoles.filter(each => each !== poppedEl)
 
@@ -72,9 +69,6 @@
             return updateUi ([...filteredArr])
 
           })
-
-        console.log(selectedRoles, 'selectedRoles', selectedRoles.length)
-        console.log(selectedRoles.includes(nodeItem.textContent), 'checking include after')
         })
 
         // As i delete my console.logs, I'm not deleting this. shows me the journey...
@@ -155,10 +149,6 @@
     selectedRoles = []
     filteredArr = []
     jobListWrapper.innerHTML = searchElWrapper.innerHTML = ''
-    // console.log(filteredArr)
-    // console.log(searchbar.classList)
-    // console.log(selectedRoles, 'selected roles')
-    // console.log(document.querySelectorAll('.role') )
     updateUi([...data])
   })
 
