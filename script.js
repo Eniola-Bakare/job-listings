@@ -255,10 +255,10 @@ const updateUi = function(dataItem){
             <p class="level">${eachJob.level}</p> 
             ${eachJob.languages.map(lang => {
               return`<p class="languages">${lang}</p>`
-            })}
+            }).join("")}
             ${eachJob.tools.map(tool => {
               return `<p class='tools'>${tool}</p>`
-            })}
+            }).join('')}
           </div>
         </div>
       `)
