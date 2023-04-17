@@ -300,10 +300,7 @@ ul.contract :first-child{
   .company-roles img{
     position: absolute;
     width: 60px;
-    top: -70%;
-  }
-  .job-list-wrapper{
-    margin-top: 40px;
+    top: -90%;
   }
 
   .clear-btn{
@@ -329,7 +326,7 @@ ul.contract :first-child{
   .search-els-wrapper{
     top: -50%;
     flex-wrap: nowrap;
-    overflow: scroll;
+    overflow: auto;
   }
   .search-bar{
     padding: 12px 18px;
